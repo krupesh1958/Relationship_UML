@@ -118,3 +118,21 @@ for i in range(len(phone_name)):
     final_dict[i+1] = obj.final_output()
 
 print(final_dict)
+
+# Abstraction in python
+
+from abc import ABC, abstractmethod
+
+class Parent :
+     
+    @abc.abstractproperty
+    def __init__ (self):
+        return ("Parent class")
+    
+class Chiled(Parent):
+    
+    def __init__ (self):
+        return super().__init__()
+    
+obj = Chiled()
+print(obj)
