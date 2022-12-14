@@ -83,3 +83,38 @@ if __name__ == '__main__':
     print(*versions(sys.argv[1]), sep='\n')
 
 # Terminal :: python <file_name> <library_name>
+
+
+# Generalization class in python
+
+class Mobiles:
+    
+    def __init__ (self,name):
+        self.name = name 
+    
+    def mobile_type (self):
+        return self.name
+        
+class Types(Mobiles):
+    
+    def __init__ (self,name,type):
+        Mobiles.__init__(self,name)
+        self.type = type
+        
+    def final_output (self):
+        dict = {}
+        dict['Mobile'] = self.name
+        dict['Type'] = self.type
+        return dict
+
+phone_name = ['samsung','iphone','oneplus']
+
+phone_type = ['samsung galaxy','iphone 14','oneplus 30 pro']
+
+final_dict = {}
+
+for i in range(len(phone_name)):
+    obj = Types (phone_name[i],phone_type[i])
+    final_dict[i+1] = obj.final_output()
+
+print(final_dict)
