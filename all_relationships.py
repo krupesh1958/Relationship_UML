@@ -63,5 +63,23 @@ class Collage:
 obj = Collage(100,50)
 print(obj.final_value())
     
+# get all versions perticular library
+
+import json
+import sys
+from urllib import request    
+from pkg_resources import parse_version    
+import ssl
+
+ssl._create_default_https_context = ssl._create_unverified_context
+
+def versions(pkg_name):
+    url = f'https://pypi.python.org/pypi/{pkg_name}/json'
+    releases = json.loads(request.urlopen(url).read())['releases']
+    return sorted(releases, key=parse_version, reverse=True)    
 
 
+if __name__ == '__main__':
+    print(*versions(sys.argv[1]), sep='\n')
+
+# Terminal :: python <file_name> <library_name>
